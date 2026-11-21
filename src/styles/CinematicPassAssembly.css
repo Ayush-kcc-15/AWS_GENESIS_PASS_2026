@@ -1,0 +1,134 @@
+/* ==========================================================================
+   GENESIS 2026 — CINEMATIC ATTENDEE PASS ASSEMBLY ANIMATION
+   Premium Charcoal, White & Electric-Blue (#40B4F5) Synthesis Sequence
+   ========================================================================== */
+
+/* 3D Perspective Stage */
+.cinematic-stage {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+/* Card 3D Wrapper */
+.cinematic-card-3d {
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+}
+
+/* Circuit Lines Pulse */
+@keyframes circuitTrace {
+  0% {
+    stroke-dashoffset: 400;
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.4;
+  }
+}
+
+.anim-circuit-trace {
+  stroke-dasharray: 400;
+  animation: circuitTrace 1.8s ease-in-out infinite alternate;
+}
+
+/* Converging Micro Squares */
+@keyframes convergeInward {
+  0% {
+    transform: scale(0.6) translate3d(var(--tx, 0), var(--ty, 0), 0);
+    opacity: 0.1;
+  }
+  60% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1) translate3d(0, 0, 0);
+    opacity: 0.2;
+  }
+}
+
+.anim-converge {
+  animation: convergeInward 1.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* Cinematic Diagonal Light Sweep */
+@keyframes cinematicLightSweep {
+  0% {
+    transform: translateY(-120%) rotate(-12deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateY(220%) rotate(-12deg);
+    opacity: 0;
+  }
+}
+
+.anim-light-sweep {
+  animation: cinematicLightSweep 1.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Progress Fill Bar */
+@keyframes progressScanFill {
+  0% {
+    width: 0%;
+  }
+  40% {
+    width: 65%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.anim-progress-bar {
+  animation: progressScanFill 1.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Subtle Border Glow Pulse */
+@keyframes borderGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(64, 180, 245, 0.2);
+    border-color: rgba(64, 180, 245, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 35px rgba(64, 180, 245, 0.5);
+    border-color: rgba(64, 180, 245, 0.9);
+  }
+}
+
+.anim-border-glow {
+  animation: borderGlowPulse 2.2s ease-in-out infinite;
+}
+
+/* Digital Blueprint Grid Pattern inside Card Assembly */
+.assembly-grid-pattern {
+  background-color: #161C25;
+  background-image:
+    linear-gradient(to right, rgba(81, 89, 99, 0.4) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(81, 89, 99, 0.4) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-card-3d,
+  .anim-circuit-trace,
+  .anim-converge,
+  .anim-light-sweep,
+  .anim-progress-bar,
+  .anim-border-glow {
+    animation: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

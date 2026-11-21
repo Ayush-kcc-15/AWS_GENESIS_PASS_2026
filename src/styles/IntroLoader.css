@@ -1,0 +1,196 @@
+/* ==========================================================================
+   GENESIS 2026 — CYBER SCAN REVEAL INTRO LOADER STYLES
+   Minimal, cinematic, futuristic technology intro with digital scanline
+   ========================================================================== */
+
+.cyber-loader-root {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background-color: transparent;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  user-select: none;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  pointer-events: auto;
+}
+
+/* Subtle Technical Gray Grid (Matches Website Theme Exactly: 72px 56px) */
+.cyber-grid-background {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(81, 89, 99, 0.28) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(81, 89, 99, 0.28) 1px, transparent 1px);
+  background-size: 72px 56px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Central Soft Radial Electric-Blue Glow */
+.cyber-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(64, 180, 245, 0.22) 0%, rgba(64, 180, 245, 0.05) 55%, transparent 75%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Skip Button: Clean, Minimal, Non-Intrusive */
+.cyber-skip-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 50;
+  background: rgba(22, 28, 37, 0.85);
+  border: 1px solid rgba(81, 89, 99, 0.7);
+  color: #8A95A3;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
+  pointer-events: auto;
+}
+
+.cyber-skip-btn:hover {
+  color: #FFFFFF;
+  border-color: #40B4F5;
+  box-shadow: 0 0 12px rgba(64, 180, 245, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Central Stage Container */
+.cyber-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  max-width: 90vw;
+}
+
+/* Central Logo Scanning Zone */
+.cyber-logo-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  background: rgba(22, 28, 37, 0.92);
+  border: 1px solid rgba(81, 89, 99, 0.75);
+  box-shadow: 0 0 35px rgba(22, 28, 37, 0.95);
+  backdrop-filter: blur(6px);
+}
+
+@media (min-width: 640px) {
+  .cyber-logo-container {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+/* The Pristine AWS SBG Logo */
+.cyber-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 24px rgba(64, 180, 245, 0.45));
+}
+
+/* Digital Scanline Element */
+.cyber-scanline {
+  position: absolute;
+  left: -8px;
+  right: -8px;
+  height: 2.5px;
+  background: #40B4F5;
+  box-shadow:
+    0 0 12px #40B4F5,
+    0 0 25px rgba(64, 180, 245, 0.8),
+    0 0 40px rgba(64, 180, 245, 0.4);
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* Scanline Light Trail */
+.cyber-scan-trail {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient(to top, rgba(64, 180, 245, 0.22), transparent);
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* Geometric Corner Brackets */
+.cyber-bracket {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-color: #40B4F5;
+  pointer-events: none;
+  z-index: 12;
+  opacity: 0.85;
+}
+
+.cyber-bracket-tl {
+  top: -10px;
+  left: -10px;
+  border-top: 2px solid #40B4F5;
+  border-left: 2px solid #40B4F5;
+}
+
+.cyber-bracket-tr {
+  top: -10px;
+  right: -10px;
+  border-top: 2px solid #40B4F5;
+  border-right: 2px solid #40B4F5;
+}
+
+.cyber-bracket-bl {
+  bottom: -10px;
+  left: -10px;
+  border-bottom: 2px solid #40B4F5;
+  border-left: 2px solid #40B4F5;
+}
+
+.cyber-bracket-br {
+  bottom: -10px;
+  right: -10px;
+  border-bottom: 2px solid #40B4F5;
+  border-right: 2px solid #40B4F5;
+}
+
+/* Scene 5: Wide Light Sweep Transition */
+.cyber-light-sweep {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(64, 180, 245, 0.08) 35%,
+      rgba(64, 180, 245, 0.35) 50%,
+      rgba(64, 180, 245, 0.08) 65%,
+      transparent 100%);
+  filter: blur(8px);
+  pointer-events: none;
+  z-index: 30;
+}

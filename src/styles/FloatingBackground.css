@@ -1,0 +1,123 @@
+/* ==========================================================================
+   GENESIS 2026 — FLOATING AWS SBG MICROCHIP BACKGROUND ANIMATION
+   Subtle, organic, continuous floating geometric elements (z-index: 0)
+   ========================================================================== */
+
+.floating-bg-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* Individual Floating Item Base */
+.floating-chip-item {
+  position: absolute;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+/* Floating Motion 1: Gentle Vertical Drift & Rotation */
+@keyframes floatGentle1 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate3d(12px, -24px, 0) rotate(6deg);
+  }
+  66% {
+    transform: translate3d(-8px, -12px, 0) rotate(-4deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+/* Floating Motion 2: Smooth Horizontal Sway & Soft Dip */
+@keyframes floatGentle2 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  40% {
+    transform: translate3d(-18px, 16px, 0) rotate(-8deg);
+  }
+  75% {
+    transform: translate3d(10px, -18px, 0) rotate(5deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+/* Floating Motion 3: Deep Slow Ambient Oscillation */
+@keyframes floatGentle3 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(16px, 28px, 0) rotate(10deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+/* Floating Motion 4: Counter-Clockwise Subtle Drift */
+@keyframes floatGentle4 {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  35% {
+    transform: translate3d(-12px, -20px, 0) rotate(-5deg);
+  }
+  70% {
+    transform: translate3d(14px, 12px, 0) rotate(7deg);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+}
+
+/* Subtle Breathing Opacity Animation */
+@keyframes subtlePulse {
+  0%, 100% {
+    opacity: var(--base-opacity, 0.12);
+  }
+  50% {
+    opacity: calc(var(--base-opacity, 0.12) * 1.45);
+  }
+}
+
+/* Class Bindings */
+.anim-float-1 {
+  animation: floatGentle1 var(--anim-duration, 16s) ease-in-out infinite,
+             subtlePulse calc(var(--anim-duration, 16s) * 0.85) ease-in-out infinite;
+}
+
+.anim-float-2 {
+  animation: floatGentle2 var(--anim-duration, 20s) ease-in-out infinite,
+             subtlePulse calc(var(--anim-duration, 20s) * 0.9) ease-in-out infinite;
+}
+
+.anim-float-3 {
+  animation: floatGentle3 var(--anim-duration, 24s) ease-in-out infinite,
+             subtlePulse calc(var(--anim-duration, 24s) * 0.75) ease-in-out infinite;
+}
+
+.anim-float-4 {
+  animation: floatGentle4 var(--anim-duration, 18s) ease-in-out infinite,
+             subtlePulse calc(var(--anim-duration, 18s) * 0.8) ease-in-out infinite;
+}
+
+/* Accessibility: Disable motion for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .anim-float-1,
+  .anim-float-2,
+  .anim-float-3,
+  .anim-float-4 {
+    animation: none !important;
+    transform: none !important;
+  }
+}
