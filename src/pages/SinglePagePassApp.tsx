@@ -16,6 +16,7 @@ import {
   Cpu,
   ShieldCheck,
   Share2,
+  Sparkles,
 } from 'lucide-react';
 import { usePass } from '../context/PassContext';
 import { GenesisPass } from '../components/GenesisPass';
@@ -26,6 +27,14 @@ import { downloadGenesisPass } from '../utils/downloadPass';
 import { eventConfig } from '../data/eventConfig';
 
 export type PassGenState = 'form' | 'validating' | 'generating' | 'revealing' | 'generated';
+
+const HIGHLIGHT_OPTIONS = [
+  'Explored the world of AWS.',
+  'Discovered cloud computing opportunities.',
+  'Connected with fellow tech enthusiasts.',
+  'Started my cloud journey.',
+  'Inspired to build something new.',
+];
 
 export const SinglePagePassApp: React.FC = () => {
   const { passData, updatePassData, resetPassData, errors, setErrors } = usePass();
@@ -89,7 +98,7 @@ export const SinglePagePassApp: React.FC = () => {
       newErrors.fullName = 'Please enter your Full Name.';
     }
     if (!passData.croppedPhotoUrl) {
-      newErrors.photo = 'Please upload your photograph to generate your pass.';
+      newErrors.photo = 'Please upload your photograph to generate your Experience Card.';
     }
 
     if (Object.keys(newErrors).length > 0) {
@@ -125,7 +134,7 @@ export const SinglePagePassApp: React.FC = () => {
     if (downloadState === 'generating') return null;
     if (!passRef.current) {
       setDownloadState('error');
-      setDownloadErrorMessage('Pass visual component not found.');
+      setDownloadErrorMessage('Experience Card visual component not found.');
       return null;
     }
 
@@ -161,7 +170,7 @@ export const SinglePagePassApp: React.FC = () => {
     } catch (err) {
       setDownloadState('error');
       setDownloadErrorMessage(
-        err instanceof Error ? err.message : 'An error occurred during pass export.'
+        err instanceof Error ? err.message : 'An error occurred during Experience Card export.'
       );
       return null;
     }
@@ -198,7 +207,7 @@ export const SinglePagePassApp: React.FC = () => {
           <div className="flex items-center justify-between px-6 sm:px-8 py-2.5 sm:py-3 border-b border-[#515963]/50 bg-[#161C25]/90 font-mono text-[11px] text-[#8A95A3] relative z-10">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#40B4F5] animate-pulse shadow-[0_0_8px_#40B4F5]" />
-              <span className="text-white font-bold tracking-wider">GENESIS 2026 // DIGITAL ATTENDEE PASS</span>
+              <span className="text-white font-bold tracking-wider">GENESIS 2026 // GENESIS EXPERIENCE CARD</span>
             </div>
             <div className="hidden sm:flex items-center gap-3">
               <span className="text-[#C4CBD3]">OFFICIAL IDENTITY ENGINE</span>
@@ -213,24 +222,24 @@ export const SinglePagePassApp: React.FC = () => {
             {/* Left Column (7 cols): Campaign Messaging & Primary CTA */}
             <div className="lg:col-span-7 p-5 sm:p-8 lg:p-10 flex flex-col justify-center space-y-4">
 
-              {/* Main Heading: GET YOUR GENESIS PASS. */}
+              {/* Main Heading: GET YOUR EXPERIENCE CARD. */}
               <div className="space-y-1">
                 <h1 className="text-3xl sm:text-5xl lg:text-6xl font-mono font-black tracking-tight text-white leading-[1.08]">
                   GET YOUR<br />
                   <span className="text-[#40B4F5] drop-shadow-[0_0_24px_rgba(64,180,245,0.4)]">
-                    GENESIS PASS.
+                    EXPERIENCE CARD.
                   </span>
                 </h1>
               </div>
 
               {/* Supporting Heading */}
               <p className="text-sm sm:text-lg lg:text-xl font-mono font-bold text-white tracking-tight">
-                Your pass. Your identity. Your GENESIS moment.
+                Your card. Your identity. Your GENESIS moment.
               </p>
 
               {/* Description */}
               <p className="text-xs sm:text-sm font-mono text-[#C4CBD3] leading-relaxed max-w-xl">
-                Create your personalized GENESIS 2026 attendee pass, share it on LinkedIn and social media, and let everyone know you&apos;re part of the celebration!
+                Create your personalized GENESIS EXPERIENCE CARD, share it on LinkedIn and social media, and let everyone know you&apos;re part of the celebration!
               </p>
 
               {/* Primary Call to Action Button */}
@@ -240,7 +249,7 @@ export const SinglePagePassApp: React.FC = () => {
                   onClick={scrollToGenerator}
                   className="px-7 py-3.5 sm:px-8 sm:py-4 bg-[#40B4F5] text-[#15212C] font-mono font-extrabold text-sm sm:text-base tracking-wider uppercase flex items-center gap-3 hover:bg-[#55C5FF] hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(64,180,245,0.5)] active:scale-[0.98] transition-all cursor-pointer shadow-lg"
                 >
-                  <span>CREATE MY GENESIS PASS</span>
+                  <span>CREATE MY EXPERIENCE CARD</span>
                   <ArrowDown className="w-4 h-4 text-[#15212C]" />
                 </button>
                 <span className="font-mono text-[11px] text-[#8A95A3] tracking-wide">
@@ -299,7 +308,7 @@ export const SinglePagePassApp: React.FC = () => {
               </div>
 
               <span className="font-mono text-xs font-bold text-[#C4CBD3] group-hover/scroll:text-[#40B4F5] tracking-[0.22em] uppercase transition-colors">
-                SCROLL TO CREATE YOUR PASS
+                SCROLL TO CREATE YOUR EXPERIENCE CARD
               </span>
 
               <motion.div
@@ -331,13 +340,13 @@ export const SinglePagePassApp: React.FC = () => {
           <div>
             <span className="text-xs font-bold text-[#40B4F5] tracking-[0.2em] uppercase flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 bg-[#40B4F5]" />
-              01 // PERSONALIZE YOUR PASS
+              01 // PERSONALIZE YOUR EXPERIENCE CARD
             </span>
             <h2 className="text-2xl sm:text-4xl font-bold text-white tracking-tight uppercase mt-1">
               YOUR GENESIS MOMENT STARTS HERE.
             </h2>
             <p className="text-xs sm:text-sm text-[#C4CBD3] mt-1 max-w-2xl">
-              Add your details, upload your photo, and create your personalized attendee pass in seconds.
+              Add your details, upload your photo, and create your personalized Experience Card in seconds.
             </p>
           </div>
 
@@ -424,7 +433,7 @@ export const SinglePagePassApp: React.FC = () => {
                     </div>
                   ) : (
                     <p className="text-[10px] text-[#8A95A3]">
-                      Rendered boldly across the center of your official pass
+                      Rendered boldly across the center of your official Experience Card
                     </p>
                   )}
                 </div>
@@ -458,23 +467,75 @@ export const SinglePagePassApp: React.FC = () => {
                   </p>
                 </div>
 
-                {/* Field 3: Photo Upload & Crop Area */}
+                {/* Field 3: My GENESIS Highlight (Selectable + Custom) */}
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <label
+                      htmlFor="highlightInput"
+                      className="text-xs font-bold tracking-wider text-[#C4CBD3] uppercase flex items-center gap-1.5"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-[#40B4F5]" />
+                      <span>My GENESIS Highlight</span>
+                    </label>
+                    <span className="text-[10px] text-[#8A95A3]">
+                      {(passData.highlight || '').length}/75
+                    </span>
+                  </div>
+
+                  {/* Quick-Select Preset Pills */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {HIGHLIGHT_OPTIONS.map((option) => {
+                      const isSelected = passData.highlight === option;
+                      return (
+                        <button
+                          key={option}
+                          type="button"
+                          onClick={() => updatePassData({ highlight: option })}
+                          className={`px-2.5 py-1 text-[10px] font-medium border transition-all cursor-pointer text-left ${
+                            isSelected
+                              ? 'bg-[#40B4F5]/15 border-[#40B4F5] text-[#40B4F5] font-bold shadow-[0_0_10px_rgba(64,180,245,0.2)]'
+                              : 'bg-[#161C25] border-[#515963]/70 text-[#A0AEC0] hover:border-[#40B4F5]/60 hover:text-white'
+                          }`}
+                        >
+                          {option}
+                        </button>
+                      );
+                    })}
+                  </div>
+
+                  {/* Custom Short Message Input */}
+                  <input
+                    id="highlightInput"
+                    type="text"
+                    value={passData.highlight}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 75) {
+                        updatePassData({ highlight: e.target.value });
+                      }
+                    }}
+                    placeholder="Or write your own short GENESIS highlight..."
+                    maxLength={75}
+                    className="w-full px-3.5 py-2.5 bg-[#161C25] border border-[#515963] focus:border-[#40B4F5] text-white placeholder-[#515963] text-xs font-medium focus:outline-none transition-colors"
+                  />
+                </div>
+
+                {/* Field 4: Photo Upload & Crop Area */}
                 <div>
                   <PhotoUploadArea />
                 </div>
 
-                {/* Prominent Action Button: GENERATE MY PASS → */}
+                {/* Prominent Action Button: GENERATE EXPERIENCE CARD → */}
                 <div className="pt-2 border-t border-[#515963]/50">
                   <button
                     type="submit"
                     className="w-full py-4 bg-[#40B4F5] text-[#15212C] font-extrabold text-sm sm:text-base tracking-wider uppercase flex items-center justify-center gap-3 hover:bg-[#55C5FF] hover:-translate-y-0.5 hover:shadow-[0_0_24px_rgba(64,180,245,0.45)] active:scale-[0.98] transition-all cursor-pointer shadow-lg"
                   >
-                    <span>GENERATE MY PASS</span>
+                    <span>GENERATE EXPERIENCE CARD</span>
                     <ArrowRight className="w-5 h-5 text-[#15212C]" />
                   </button>
 
                   <p className="text-[11px] text-center text-[#8A95A3] mt-2.5">
-                    Click to assemble your official 1080 × 1440 digital identity pass
+                    Click to assemble your official 1080 × 1440 GENESIS Experience Card
                   </p>
                 </div>
               </form>
@@ -493,7 +554,7 @@ export const SinglePagePassApp: React.FC = () => {
                 <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#515963]/50 text-xs">
                   <span className="text-[#40B4F5] font-bold flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-[#40B4F5] animate-pulse" />
-                    PASS SPECIFICATION PORTAL
+                    EXPERIENCE CARD SPECIFICATION PORTAL
                   </span>
                   <span className="text-[#8A95A3] text-[10px] px-2 py-0.5 bg-[#161C25] border border-[#515963]">
                     3:4 • 1080×1440 HD
@@ -538,6 +599,9 @@ export const SinglePagePassApp: React.FC = () => {
                       <div className="text-[11px] text-[#8A95A3] truncate">
                         {passData.collegeName || 'KCC Institute of Technology & Management'}
                       </div>
+                      <div className="text-[10px] text-[#40B4F5] italic truncate px-2">
+                        &ldquo;{passData.highlight?.trim() || 'Explored the world of AWS.'}&rdquo;
+                      </div>
                     </div>
 
                     {/* Readiness Checklist */}
@@ -570,7 +634,7 @@ export const SinglePagePassApp: React.FC = () => {
                 </div>
 
                 <div className="mt-3 text-[11px] text-center text-[#8A95A3]">
-                  Fill details and click <strong className="text-white">&quot;GENERATE MY PASS&quot;</strong> to trigger the cinematic reveal
+                  Fill details and click <strong className="text-white">&quot;GENERATE EXPERIENCE CARD&quot;</strong> to trigger the cinematic reveal
                 </div>
 
               </div>
@@ -606,25 +670,25 @@ export const SinglePagePassApp: React.FC = () => {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="space-y-8"
           >
-            {/* Header: YOUR GENESIS PASS IS READY! */}
+            {/* Header: EXPERIENCE CARD GENERATED SUCCESSFULLY! */}
             <div className="p-6 sm:p-8 bg-[#1B222C] border border-[#40B4F5] text-center space-y-3 shadow-[0_0_30px_rgba(64,180,245,0.25)] relative overflow-hidden">
               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-24 bg-[#40B4F5]/15 rounded-full blur-[60px] pointer-events-none" />
 
               <div className="inline-flex items-center gap-2 px-3.5 py-1 bg-[#161C25] border border-[#40B4F5] text-[#40B4F5] text-xs font-bold tracking-widest uppercase shadow-[0_0_12px_rgba(64,180,245,0.2)]">
                 <CheckCircle2 className="w-4 h-4 text-[#40B4F5]" />
-                <span>GENESIS 2026 // IDENTITY READY</span>
+                <span>GENESIS 2026 // EXPERIENCE CARD READY</span>
               </div>
 
               <h3 className="text-2xl sm:text-4xl font-black text-white tracking-tight uppercase">
-                YOUR GENESIS PASS IS READY!
+                EXPERIENCE CARD GENERATED SUCCESSFULLY!
               </h3>
 
               <p className="text-xs sm:text-sm text-[#C4CBD3] max-w-xl mx-auto">
-                Your identity. Your moment. Your GENESIS.
+                Your GENESIS Experience Card. Your identity. Your GENESIS moment.
               </p>
             </div>
 
-            {/* Center Generated Attendee Pass Component */}
+            {/* Center Generated Experience Card Component */}
             <div className="flex flex-col items-center justify-center">
               <div className="w-full max-w-[480px] p-4 sm:p-6 pass-preview-glassmorphic relative overflow-hidden group hover:border-[#40B4F5]/60 hover:shadow-[0_0_35px_rgba(64,180,245,0.3)] transition-all duration-500">
                 
@@ -632,7 +696,7 @@ export const SinglePagePassApp: React.FC = () => {
                 <div className="w-full flex items-center justify-between pb-3 mb-3 border-b border-[#515963]/50 text-xs relative z-20">
                   <span className="text-[#40B4F5] font-bold flex items-center gap-2 px-2.5 py-1 rounded-lg bg-[#161C25]/80 border border-[#40B4F5]/35 shadow-[0_0_12px_rgba(64,180,245,0.2)]">
                     <ShieldCheck className="w-3.5 h-3.5 text-[#40B4F5]" />
-                    VERIFIED ATTENDEE PASS
+                    VERIFIED EXPERIENCE CARD
                   </span>
                   <span className="text-[#8A95A3] px-2 py-0.5 rounded bg-[#161C25]/60 border border-[#515963]/50 text-[10px]">
                     1080×1440 HD
@@ -646,30 +710,31 @@ export const SinglePagePassApp: React.FC = () => {
                     studentName={studentName}
                     studentPhoto={studentPhoto}
                     collegeName={passData.collegeName || eventConfig.brand.institution}
+                    highlight={passData.highlight}
                   />
                 </div>
 
                 {/* Footer Metadata */}
                 <div className="mt-4 pt-3 border-t border-[#515963]/40 flex items-center justify-between text-[11px] text-[#8A95A3] relative z-20">
                   <span className="px-2 py-0.5 rounded bg-[#161C25]/60 border border-[#515963]/40">
-                    Official Identity Card
+                    GENESIS 2026 RECAP
                   </span>
                   <span className="text-[#40B4F5] px-2 py-0.5 rounded bg-[#40B4F5]/10 border border-[#40B4F5]/35 font-semibold">
-                    Live Verified Pass
+                    MY EVENT EXPERIENCE
                   </span>
                 </div>
               </div>
             </div>
 
-            {/* Action Buttons Directly Below the Pass */}
+            {/* Action Buttons Directly Below the Experience Card */}
             <div className="p-6 bg-[#1B222C] border border-[#515963] space-y-4 shadow-xl">
               <div className="text-center text-xs font-bold text-[#8A95A3] uppercase tracking-wider">
-                Pass Actions &amp; Controls:
+                Experience Card Actions &amp; Controls:
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                 
-                {/* Button 1: Download Pass */}
+                {/* Button 1: Download Experience Card */}
                 <button
                   onClick={handleDownload}
                   disabled={downloadState === 'generating'}
@@ -694,7 +759,7 @@ export const SinglePagePassApp: React.FC = () => {
                   ) : (
                     <>
                       <Download className="w-4 h-4 text-[#15212C]" />
-                      <span>DOWNLOAD YOUR PASS</span>
+                      <span>DOWNLOAD EXPERIENCE CARD</span>
                     </>
                   )}
                 </button>
@@ -732,7 +797,7 @@ export const SinglePagePassApp: React.FC = () => {
                   className="px-6 py-2.5 bg-[#161C25] border border-[#515963] hover:border-[#40B4F5] text-xs text-[#8A95A3] hover:text-white uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5 text-[#40B4F5]" />
-                  <span>GENERATE ANOTHER PASS</span>
+                  <span>GENERATE ANOTHER CARD</span>
                 </button>
               </div>
 
@@ -784,7 +849,7 @@ export const SinglePagePassApp: React.FC = () => {
             <div className="border border-[#515963] max-h-72 overflow-hidden flex items-center justify-center bg-black">
               <img
                 src={downloadedDataUrl}
-                alt="Your Pass"
+                alt="Your GENESIS Experience Card"
                 className="max-h-72 w-auto object-contain"
               />
             </div>

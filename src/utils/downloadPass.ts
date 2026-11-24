@@ -110,13 +110,13 @@ export const downloadGenesisPass = async ({
   targetHeight = 1440,
 }: DownloadPassOptions): Promise<DownloadResult> => {
   if (!passElement) {
-    return { success: false, error: 'Pass element reference not found.' };
+    return { success: false, error: 'Experience Card element reference not found.' };
   }
 
   try {
     const dataUrl = await renderPassToDataUrl(passElement, targetWidth, targetHeight);
     const safeName = sanitizeFileName(studentName);
-    const fileName = `GENESIS_2026_${safeName}_PASS.png`;
+    const fileName = `GENESIS_EXPERIENCE_CARD_${safeName}.png`;
 
     const isIOS =
       /iPad|iPhone|iPod/.test(navigator.userAgent) ||
@@ -132,13 +132,13 @@ export const downloadGenesisPass = async ({
       isMobileSaveRequired: isIOS,
     };
   } catch (err) {
-    console.error('Failed to export Genesis Pass PNG:', err);
+    console.error('Failed to export GENESIS Experience Card PNG:', err);
     return {
       success: false,
       error:
         err instanceof Error
           ? err.message
-          : 'An unexpected error occurred while rendering the pass.',
+          : 'An unexpected error occurred while rendering the Experience Card.',
     };
   }
 };

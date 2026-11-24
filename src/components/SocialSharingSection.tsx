@@ -95,7 +95,7 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
       fileName: string;
     } | null> => {
       const safeName = sanitizeFileName(studentName || 'ATTENDEE');
-      const fileName = `GENESIS_2026_${safeName}_PASS.png`;
+      const fileName = `GENESIS_EXPERIENCE_CARD_${safeName}.png`;
 
       try {
         if (cachedFile && cachedDataUrl) {
@@ -105,7 +105,7 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
         let currentDataUrl = cachedDataUrl;
         if (!currentDataUrl) {
           if (!passElementRef?.current) {
-            throw new Error('Pass visual element not found.');
+            throw new Error('Experience Card visual element not found.');
           }
           currentDataUrl = await renderPassToDataUrl(passElementRef.current, 1080, 1440);
           setCachedDataUrl(currentDataUrl);
@@ -145,13 +145,13 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
       }
 
       try {
-        // STEP 1 — PREPARE PASS
-        setStatusMessage('Preparing your GENESIS pass...');
+        // STEP 1 — PREPARE EXPERIENCE CARD
+        setStatusMessage('Preparing your GENESIS Experience Card...');
         const rendered = await getRenderedPassFile();
 
         if (!rendered) {
           if (popupWindow) popupWindow.close();
-          setStatusMessage('Could not render pass image. Please try again.');
+          setStatusMessage('Could not render Experience Card image. Please try again.');
           setIsProcessing(false);
           setActiveActionPlatform(null);
           return;
@@ -171,7 +171,7 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
             });
 
             if (didShare) {
-              setStatusMessage('Pass ready to share.');
+              setStatusMessage('Experience Card ready to share.');
               setTimeout(() => setStatusMessage(null), 3500);
               setIsProcessing(false);
               setActiveActionPlatform(null);
@@ -184,7 +184,7 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
         if (!hasDownloadedLocally) {
           triggerFileDownload(dataUrl, fileName);
           setHasDownloadedLocally(true);
-          setStatusMessage('Your pass has been downloaded.');
+          setStatusMessage('Your GENESIS Experience Card has been downloaded.');
         }
 
         // STEP 3 — COPY CAPTION TO CLIPBOARD
@@ -216,7 +216,7 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
 
         // STEP 5 — SHOW INSTRUCTION PANEL
         setActiveModalPlatform(platform);
-        setStatusMessage('Complete your post by attaching your pass.');
+        setStatusMessage('Complete your post by attaching your Experience Card.');
       } catch (err) {
         console.error('Sharing workflow error:', err);
         setStatusMessage('An error occurred. Please try again.');
@@ -288,7 +288,7 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
 
         {/* Main Sharing Console Card */}
         <div className="bg-[#1B222C] border border-[#515963] p-6 sm:p-8 space-y-6 shadow-2xl relative overflow-hidden">
-          
+
           {/* Subtle Ambient Refraction Lighting */}
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#40B4F5]/5 rounded-full blur-[60px] pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#40B4F5]/5 rounded-full blur-[50px] pointer-events-none" />
@@ -301,11 +301,11 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
             </div>
 
             <h3 className="text-2xl sm:text-3xl font-black text-white tracking-tight uppercase">
-              YOUR GENESIS PASS IS READY!
+              YOUR GENESIS EXPERIENCE CARD IS READY!
             </h3>
 
             <p className="text-xs sm:text-sm text-[#C4CBD3] max-w-xl mx-auto">
-              Your GENESIS identity is ready. Share your pass with the world and celebrate with the community!
+              Your GENESIS Experience Card is ready. Share your card with the world and celebrate with the community!
             </p>
           </div>
 
@@ -317,11 +317,10 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
                 <button
                   type="button"
                   onClick={() => setSelectedTab('linkedin')}
-                  className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
-                    selectedTab === 'linkedin'
-                      ? 'bg-[#40B4F5] text-[#15212C] shadow-[0_0_12px_rgba(64,180,245,0.3)]'
-                      : 'bg-[#161C25] text-[#8A95A3] hover:text-white border border-[#515963]'
-                  }`}
+                  className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer ${selectedTab === 'linkedin'
+                    ? 'bg-[#40B4F5] text-[#15212C] shadow-[0_0_12px_rgba(64,180,245,0.3)]'
+                    : 'bg-[#161C25] text-[#8A95A3] hover:text-white border border-[#515963]'
+                    }`}
                 >
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                     <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45c-.96 0-1.74.78-1.74 1.74 0 .96.78 1.74 1.74 1.74.96 0 1.74-.78 1.74-1.74Z" />
@@ -332,11 +331,10 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
                 <button
                   type="button"
                   onClick={() => setSelectedTab('instagram')}
-                  className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer ${
-                    selectedTab === 'instagram'
-                      ? 'bg-[#40B4F5] text-[#15212C] shadow-[0_0_12px_rgba(64,180,245,0.3)]'
-                      : 'bg-[#161C25] text-[#8A95A3] hover:text-white border border-[#515963]'
-                  }`}
+                  className={`px-3 py-1.5 text-xs font-bold uppercase tracking-wider flex items-center gap-2 transition-all cursor-pointer ${selectedTab === 'instagram'
+                    ? 'bg-[#40B4F5] text-[#15212C] shadow-[0_0_12px_rgba(64,180,245,0.3)]'
+                    : 'bg-[#161C25] text-[#8A95A3] hover:text-white border border-[#515963]'
+                    }`}
                 >
                   <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
                     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069M12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
@@ -407,7 +405,7 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              
+
               {/* PLATFORM 1: LINKEDIN */}
               <motion.button
                 type="button"
@@ -428,7 +426,7 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
                       SHARE ON LINKEDIN
                     </div>
                     <div className="text-[10px] text-[#8A95A3] group-hover:text-[#C4CBD3]">
-                      Auto-Download Pass + Copy Caption + Open Feed
+                      Auto-Download Card + Copy Caption + Open Feed
                     </div>
                   </div>
                 </div>
@@ -460,7 +458,7 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
                       SHARE ON INSTAGRAM
                     </div>
                     <div className="text-[10px] text-[#8A95A3] group-hover:text-[#C4CBD3]">
-                      Auto-Download Pass + Copy Caption + Open App
+                      Auto-Download Card + Copy Caption + Open App
                     </div>
                   </div>
                 </div>
@@ -521,16 +519,16 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
                   <div className="space-y-4">
                     <div>
                       <h4 className="text-2xl font-black text-white uppercase tracking-tight">
-                        YOUR GENESIS PASS IS READY!
+                        EXPERIENCE CARD GENERATED SUCCESSFULLY!
                       </h4>
                       <p className="text-xs text-[#40B4F5] mt-1 font-semibold">
-                        &quot;Just one more step to share your GENESIS moment.&quot;
+                        &quot;Just one more step to share your GENESIS Experience Card.&quot;
                       </p>
                     </div>
 
                     {/* Three Numbered Steps */}
                     <div className="space-y-3 bg-[#161C25] p-4 border border-[#515963]/60 text-xs">
-                      
+
                       {/* Step 01 */}
                       <div className="flex items-start gap-3">
                         <span className="px-2 py-0.5 bg-[#1B222C] border border-[#40B4F5] text-[#40B4F5] text-[11px] font-bold shrink-0 mt-0.5">
@@ -538,10 +536,10 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
                         </span>
                         <div>
                           <div className="text-white font-bold uppercase tracking-wide">
-                            YOUR PASS IS DOWNLOADED
+                            YOUR EXPERIENCE CARD IS DOWNLOADED
                           </div>
                           <div className="text-[#A0AEC0] text-[11px] mt-0.5 leading-relaxed">
-                            Your personalized GENESIS attendee pass has been saved to your Downloads folder.
+                            Your personalized GENESIS Experience Card has been saved to your Downloads folder.
                           </div>
                         </div>
                       </div>
@@ -568,10 +566,10 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
                         </span>
                         <div>
                           <div className="text-white font-bold uppercase tracking-wide">
-                            ADD YOUR PASS &amp; PUBLISH
+                            ADD YOUR EXPERIENCE CARD &amp; PUBLISH
                           </div>
                           <div className="text-[#A0AEC0] text-[11px] mt-0.5 leading-relaxed">
-                            On LinkedIn, click Start a post, attach your downloaded GENESIS pass, paste your caption and publish!
+                            On LinkedIn, click Start a post, attach your downloaded GENESIS Experience Card, paste your caption and publish!
                           </div>
                         </div>
                       </div>
@@ -585,16 +583,16 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
                   <div className="space-y-4">
                     <div>
                       <h4 className="text-2xl font-black text-white uppercase tracking-tight">
-                        YOUR GENESIS PASS IS READY!
+                        EXPERIENCE CARD GENERATED SUCCESSFULLY!
                       </h4>
                       <p className="text-xs text-[#40B4F5] mt-1 font-semibold">
-                        &quot;Your pass is downloaded and your Instagram caption is copied.&quot;
+                        &quot;Your Experience Card is downloaded and your Instagram caption is copied.&quot;
                       </p>
                     </div>
 
                     {/* Four Numbered Steps */}
                     <div className="space-y-3 bg-[#161C25] p-4 border border-[#515963]/60 text-xs">
-                      
+
                       {/* Step 01 */}
                       <div className="flex items-start gap-3">
                         <span className="px-2 py-0.5 bg-[#1B222C] border border-[#40B4F5] text-[#40B4F5] text-[11px] font-bold shrink-0 mt-0.5">
@@ -632,10 +630,10 @@ export const SocialSharingSection = forwardRef<SocialSharingHandle, SocialSharin
                         </span>
                         <div>
                           <div className="text-white font-bold uppercase tracking-wide">
-                            UPLOAD YOUR PASS
+                            UPLOAD YOUR EXPERIENCE CARD
                           </div>
                           <div className="text-[#A0AEC0] text-[11px] mt-0.5 leading-relaxed">
-                            Choose the GENESIS attendee pass from your Downloads folder.
+                            Choose the GENESIS Experience Card from your Downloads folder.
                           </div>
                         </div>
                       </div>

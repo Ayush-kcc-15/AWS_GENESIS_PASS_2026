@@ -119,11 +119,11 @@ export const CinematicPassAssembly: React.FC<CinematicPassAssemblyProps> = ({
               </div>
 
               <h3 className="text-xl sm:text-2xl font-black text-white tracking-wider uppercase">
-                GENERATING YOUR GENESIS PASS...
+                GENERATING YOUR EXPERIENCE CARD...
               </h3>
 
               <p className="text-xs text-[#8A95A3] max-w-sm mx-auto">
-                Compiling cryptographic attendee vectors &amp; 1080×1440 HD layout
+                Compiling Experience Card vectors &amp; 1080×1440 HD layout
               </p>
             </div>
 
@@ -159,7 +159,7 @@ export const CinematicPassAssembly: React.FC<CinematicPassAssemblyProps> = ({
                 <span>ASSEMBLING DIGITAL IDENTITY</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-black text-white tracking-wider uppercase">
-                SYNTHESIZING PASS BLUEPRINT...
+                SYNTHESIZING EXPERIENCE CARD BLUEPRINT...
               </h3>
             </div>
 

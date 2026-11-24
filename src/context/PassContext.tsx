@@ -3,6 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 export interface PassData {
   fullName: string;
   collegeName: string;
+  highlight: string;
   originalPhotoUrl: string | null;
   croppedPhotoUrl: string | null;
   photoFileName: string;
@@ -23,6 +24,7 @@ interface PassContextType {
 const DEFAULT_PASS_DATA: PassData = {
   fullName: '',
   collegeName: 'KCC Institute of Technology & Management',
+  highlight: 'Explored the world of AWS.',
   originalPhotoUrl: null,
   croppedPhotoUrl: null,
   photoFileName: '',

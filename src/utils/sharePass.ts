@@ -19,7 +19,7 @@ export const getLinkedInCaption = (studentName?: string): string => {
 
   return `${nameLine}
 
-My GENESIS attendee pass is ready! Looking forward to exploring cloud technology, connecting with fellow tech enthusiasts, and celebrating this experience at KCC Institute of Technology & Management, Greater Noida.
+My GENESIS Experience Card is ready! Looking forward to exploring cloud technology, connecting with fellow tech enthusiasts, and celebrating this experience at KCC Institute of Technology & Management, Greater Noida.
 
 Let's make GENESIS 2026 unforgettable!
 
@@ -43,7 +43,7 @@ export const getInstagramCaption = (studentName?: string): string => {
 
   return `${nameLine}
 
-My GENESIS attendee pass is ready. Looking forward to an amazing experience exploring AWS, cloud technology and innovation at KCC ITM, Greater Noida.
+My GENESIS Experience Card is ready. Looking forward to an amazing experience exploring AWS, cloud technology and innovation at KCC ITM, Greater Noida.
 
 Let's celebrate GENESIS 2026 together!
 

@@ -74,10 +74,10 @@ export const ElectricBlueBrandingStrip: React.FC = () => {
       >
         <div className="flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-[#40B4F5]" />
-          <span>GENESIS 2026 • OFFICIAL ATTENDEE IDENTITY GENERATOR</span>
+          <span>GENESIS 2026 • OFFICIAL EXPERIENCE CARD GENERATOR</span>
         </div>
         <p className="text-center sm:text-right">
-          This pass is a promotional social identity and does not constitute verified event admission.
+          This Experience Card is a promotional social identity and does not constitute verified event admission.
         </p>
       </motion.div>
     </motion.footer>

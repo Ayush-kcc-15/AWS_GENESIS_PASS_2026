@@ -141,7 +141,7 @@ export const PhotoUploadArea: React.FC = () => {
               </span>
             </p>
             <p className="text-xs text-[#C4CBD3]">
-              Clear frontal portrait photo for the official attendee pass
+              Clear frontal portrait photo for your GENESIS Experience Card
             </p>
           </div>
 

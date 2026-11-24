@@ -6,6 +6,7 @@ export interface GenesisPassProps {
   studentName?: string;
   studentPhoto?: string | null;
   collegeName?: string;
+  highlight?: string;
   className?: string;
 }
 
@@ -15,13 +16,15 @@ export const GenesisPass = React.forwardRef<HTMLDivElement, GenesisPassProps>(
       studentName = 'AYUSH KUMAR',
       studentPhoto = null,
       collegeName: _collegeName,
+      highlight = 'Explored the world of AWS.',
       className = '',
     },
     ref
   ) => {
     const rawName = studentName?.trim() || 'AYUSH KUMAR';
     const displayName = rawName.toUpperCase();
-    
+    const displayHighlight = highlight?.trim() || 'Explored the world of AWS.';
+
     // College name is permanently frozen and cannot be changed
     const displayCollege = 'KCC INSTITUTE OF TECHNOLOGY & MANAGEMENT';
 
@@ -236,7 +239,7 @@ export const GenesisPass = React.forwardRef<HTMLDivElement, GenesisPassProps>(
           <section className="pass-section pass-section-event">
             <div className="pass-event-badge">
               <span>✦</span>
-              <span>OFFICIAL DIGITAL ATTENDEE PASS</span>
+              <span>GENESIS EXPERIENCE CARD</span>
               <span>✦</span>
             </div>
 
@@ -310,13 +313,23 @@ export const GenesisPass = React.forwardRef<HTMLDivElement, GenesisPassProps>(
 
             <div className="pass-attendee-role-badge">
               <span className="pass-role-dot" />
-              <span className="pass-role-text">GENESIS ATTENDEE</span>
+              <span className="pass-role-text">I WAS PART OF GENESIS 2026</span>
               <span className="pass-role-dot" />
             </div>
 
             <p className="pass-attendee-college" title={displayCollege}>
               {displayCollege}
             </p>
+          </section>
+
+          {/* ==============================================================
+              SECTION D2: MY GENESIS HIGHLIGHT (Compact Personal Recap)
+              ============================================================== */}
+          <section className="pass-section pass-section-highlight">
+            <div className="pass-highlight-box">
+              <span className="pass-highlight-label">MY GENESIS HIGHLIGHT</span>
+              <p className="pass-highlight-text">&ldquo;{displayHighlight}&rdquo;</p>
+            </div>
           </section>
 
           {/* ==============================================================
@@ -350,24 +363,28 @@ export const GenesisPass = React.forwardRef<HTMLDivElement, GenesisPassProps>(
           </section>
 
           {/* ==============================================================
-              SECTION F: FOOTER
-              BUILD. EXPLORE. INNOVATE. & Actual AWS SBG Microchip Logo
+              SECTION F: FOOTER & EMOTIONAL CLOSING LINE
               ============================================================== */}
-          <footer className="pass-section pass-section-footer">
-            <span className="pass-footer-motto">
-              BUILD. EXPLORE. INNOVATE.
-            </span>
+          <div className="pass-section pass-closing-wrap">
+            <p className="pass-closing-line">
+              ONE EVENT. NEW CONNECTIONS. ENDLESS POSSIBILITIES.
+            </p>
+            <footer className="pass-section-footer">
+              <span className="pass-footer-motto">
+                BUILD. EXPLORE. INNOVATE.
+              </span>
 
-            <div className="pass-footer-chip">
-              <img
-                src="/assets/aws-sbg-logo-transparent.png"
-                alt="AWS SBG Chip"
-                className="pass-chip-icon"
-                crossOrigin="anonymous"
-              />
-              <span className="pass-footer-code">GENESIS // 2026</span>
-            </div>
-          </footer>
+              <div className="pass-footer-chip">
+                <img
+                  src="/assets/aws-sbg-logo-transparent.png"
+                  alt="AWS SBG Chip"
+                  className="pass-chip-icon"
+                  crossOrigin="anonymous"
+                />
+                <span className="pass-footer-code">GENESIS // 2026</span>
+              </div>
+            </footer>
+          </div>
 
         </div>
       </div>
